@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-red: #c02026;
+  --color-brand-dark: #282020;
+  --color-brand-stripe: #e73525;
+  --color-brand-gray: #4a4242;
+  --font-heading: 'Barlow Condensed', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background-color: #ffffff;
+  color: #282020;
+  margin: 0;
+}
+
+.caution-stripe {
+  background: repeating-linear-gradient(
+    -45deg,
+    #c02026 0px,
+    #c02026 20px,
+    #282020 20px,
+    #282020 40px
+  );
+}
+
+.caution-stripe-light {
+  background: repeating-linear-gradient(
+    -45deg,
+    #c02026 0px,
+    #c02026 12px,
+    #ffffff 12px,
+    #ffffff 24px
+  );
+}
