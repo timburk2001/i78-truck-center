@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import LogoHorizontal from '../../assets/logo-horizontal-dark.svg?react'
+import LogoHorizontal from '../../assets/logo-horizontal-white.svg?react'
 
 const navLinks = [
   { to: '/', label: 'Home', end: true },

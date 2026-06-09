@@ -3,7 +3,7 @@ import CautionStripe from '../components/ui/CautionStripe'
 import TrustBar from '../components/ui/TrustBar'
 import ServiceCard from '../components/ui/ServiceCard'
 import QuoteCalculator from '../components/calculator/QuoteCalculator'
-import LogoVertical from '../assets/logo-vertical-dark.svg?react'
+import LogoVertical from '../assets/logo-vertical-white.svg?react'
 
 const SERVICES_PREVIEW = [
   { icon: '🚗', title: 'Light Duty Towing', description: 'Fast, reliable towing for passenger vehicles, motorcycles, and SUVs up to 7,000 lbs.', image: '/assets/light-duty-scene.jpg' },

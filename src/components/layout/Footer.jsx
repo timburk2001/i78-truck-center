@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom'
-import LogoVertical from '../../assets/logo-vertical-dark.svg?react'
+import LogoVertical from '../../assets/logo-vertical-white.svg?react'
 
 const navLinks = [
   { to: '/', label: 'Home', end: true },
