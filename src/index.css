@@ -2,10 +2,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-red: #c02026;
-  --color-brand-dark: #282020;
-  --color-brand-stripe: #e73525;
-  --color-brand-gray: #4a4242;
+  /* Official I78 Brand Colors (from Brand Identity Guidelines) */
+  --color-brand-red: #c02026;       /* Primary Red */
+  --color-brand-orange: #e73525;    /* Secondary Red/Orange */
+  --color-brand-navy: #123c5f;      /* Navy Blue */
+  --color-brand-dark: #282020;      /* Near-Black */
+  --color-brand-warm-gray: #dad2c9; /* Warm Gray */
+  --color-brand-cream: #f7f3ed;     /* Off-White / Cream */
   --font-heading: 'Barlow Condensed', sans-serif;
   --font-body: 'Barlow', sans-serif;
 }
@@ -20,27 +23,37 @@ html {
 
 body {
   font-family: 'Barlow', sans-serif;
-  background-color: #ffffff;
+  background-color: #f7f3ed;
   color: #282020;
   margin: 0;
 }
 
+/* Brand caution stripe — uses the actual brand PNG (tiles horizontally) */
 .caution-stripe {
-  background: repeating-linear-gradient(
-    -45deg,
-    #c02026 0px,
-    #c02026 20px,
-    #282020 20px,
-    #282020 40px
-  );
+  background-image: url('/assets/caution-orange.png');
+  background-size: auto 100%;
+  background-repeat: repeat-x;
 }
 
-.caution-stripe-light {
-  background: repeating-linear-gradient(
-    -45deg,
-    #c02026 0px,
-    #c02026 12px,
-    #ffffff 12px,
-    #ffffff 24px
-  );
+.caution-stripe-grey {
+  background-image: url('/assets/caution-warmgrey.png');
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+}
+
+.caution-stripe-dark {
+  background-image: url('/assets/caution-black.png');
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+}
+
+/* Tire-track texture overlay for dark sections */
+.texture-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/brand-texture.jpg');
+  background-size: 550px 550px;
+  background-repeat: repeat;
+  opacity: 0.06;
+  pointer-events: none;
 }

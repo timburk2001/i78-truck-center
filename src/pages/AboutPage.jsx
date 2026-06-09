@@ -24,15 +24,14 @@ const TEAM = [
 function TeamMemberCard({ name, title, bio }) {
   return (
     <div
-      className="rounded-xl overflow-hidden border border-white/10 flex flex-col"
-      style={{ backgroundColor: '#1e1818' }}
+      className="rounded-xl overflow-hidden border flex flex-col"
+      style={{ backgroundColor: '#282020', borderColor: 'rgba(255,255,255,0.1)' }}
     >
-      {/* Photo placeholder */}
       <div
         className="aspect-square flex items-center justify-center"
-        style={{ backgroundColor: '#282020' }}
+        style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}
       >
-        <span className="text-6xl opacity-30">👤</span>
+        <span className="text-6xl" style={{ opacity: 0.3 }}>👤</span>
       </div>
       <div className="p-5 flex flex-col gap-1 flex-1">
         <h3
@@ -44,7 +43,7 @@ function TeamMemberCard({ name, title, bio }) {
         <p className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#c02026' }}>
           {title}
         </p>
-        <p className="text-white/55 text-sm leading-relaxed mt-2">{bio}</p>
+        <p className="text-sm leading-relaxed mt-2" style={{ color: 'rgba(255,255,255,0.55)' }}>{bio}</p>
       </div>
     </div>
   )
@@ -53,8 +52,10 @@ function TeamMemberCard({ name, title, bio }) {
 function HiringCard({ onApply }) {
   return (
     <div
-      className="rounded-xl overflow-hidden border-2 border-dashed flex flex-col items-center justify-center text-center p-8 gap-4 cursor-pointer hover:border-red-500 transition-colors"
-      style={{ borderColor: '#c02026', backgroundColor: '#1a1414', minHeight: '320px' }}
+      className="rounded-xl overflow-hidden border-2 border-dashed flex flex-col items-center justify-center text-center p-8 gap-4 cursor-pointer transition-colors"
+      style={{ borderColor: '#c02026', backgroundColor: '#282020', minHeight: '320px' }}
+      onMouseEnter={e => e.currentTarget.style.backgroundColor = '#123c5f'}
+      onMouseLeave={e => e.currentTarget.style.backgroundColor = '#282020'}
       onClick={onApply}
     >
       <div
@@ -70,7 +71,7 @@ function HiringCard({ onApply }) {
         >
           We're Hiring!
         </h3>
-        <p className="text-white/55 text-sm leading-relaxed max-w-xs">
+        <p className="text-sm leading-relaxed max-w-xs" style={{ color: 'rgba(255,255,255,0.55)' }}>
           Join the I78 Truck Center team. We're always looking for skilled drivers, technicians, and dispatchers who share our commitment to excellence.
         </p>
       </div>
@@ -101,6 +102,7 @@ export default function AboutPage() {
           aria-hidden="true"
         />
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(40,32,32,0.82)' }} aria-hidden="true" />
+        <div className="absolute inset-0 texture-overlay" aria-hidden="true" />
         <div className="relative z-10 max-w-3xl mx-auto">
           <h1
             className="text-white text-5xl sm:text-6xl font-black uppercase tracking-wide mb-4"
@@ -108,7 +110,7 @@ export default function AboutPage() {
           >
             About I78 Truck Center
           </h1>
-          <p className="text-white/60 text-lg">
+          <p className="text-lg" style={{ color: 'rgba(255,255,255,0.6)' }}>
             Built in Bethel. Trusted across Pennsylvania.
           </p>
         </div>
@@ -118,11 +120,19 @@ export default function AboutPage() {
       </section>
 
       {/* Company history */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div
-            className="rounded-xl aspect-video overflow-hidden"
-          >
+      <section className="py-20 px-6 relative overflow-hidden" style={{ backgroundColor: '#f7f3ed' }}>
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: "url('/assets/caution-warmgrey.png')",
+            backgroundSize: 'auto 80px',
+            backgroundRepeat: 'repeat',
+            opacity: 0.18,
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative z-10 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="rounded-xl aspect-video overflow-hidden">
             <img
               src="/assets/shop-fleet.jpg"
               alt="I78 Truck Center shop and fleet"
@@ -136,13 +146,13 @@ export default function AboutPage() {
             >
               Our Story
             </h2>
-            <p className="text-gray-600 leading-relaxed mb-4">
+            <p className="leading-relaxed mb-4" style={{ color: 'rgba(40,32,32,0.7)' }}>
               I78 Truck Center began with a single truck and an unwavering commitment to showing up — rain, snow, or the middle of the night. What started as a local roadside assistance service has grown into one of the region's most capable towing and recovery operations, serving individual motorists and commercial fleets across Pennsylvania.
             </p>
-            <p className="text-gray-600 leading-relaxed mb-4">
+            <p className="leading-relaxed mb-4" style={{ color: 'rgba(40,32,32,0.7)' }}>
               Based at our facility at 120 Klein Road in Bethel, PA, we've built our reputation call by call, job by job. Every member of our team understands that when the phone rings, someone is counting on us. That sense of responsibility drives everything we do.
             </p>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="leading-relaxed" style={{ color: 'rgba(40,32,32,0.7)' }}>
               From state police-mandated recovery scenes on I-78 to getting a family back on the road after a breakdown — we treat every job with the same level of professionalism and urgency.
             </p>
           </div>
@@ -152,8 +162,9 @@ export default function AboutPage() {
       <CautionStripe />
 
       {/* Values */}
-      <section className="py-16 px-6" style={{ backgroundColor: '#282020' }}>
-        <div className="max-w-5xl mx-auto text-center mb-10">
+      <section className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: '#123c5f' }}>
+        <div className="absolute inset-0 texture-overlay" aria-hidden="true" />
+        <div className="relative z-10 max-w-5xl mx-auto text-center mb-10">
           <h2
             className="text-white text-4xl font-black uppercase tracking-wide"
             style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
@@ -161,7 +172,7 @@ export default function AboutPage() {
             What We Stand For
           </h2>
         </div>
-        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="relative z-10 max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
           {[
             { icon: '⚡', title: 'Rapid Response', desc: 'Every minute counts in an emergency. We prioritize speed without sacrificing safety.' },
             { icon: '🤝', title: 'Honest Service', desc: 'No hidden fees. No runaround. You\'ll know the price before we hook up.' },
@@ -169,8 +180,8 @@ export default function AboutPage() {
           ].map(({ icon, title, desc }) => (
             <div
               key={title}
-              className="rounded-xl p-6 border border-white/10 text-center"
-              style={{ backgroundColor: '#1e1818' }}
+              className="rounded-xl p-6 border text-center"
+              style={{ backgroundColor: 'rgba(255,255,255,0.08)', borderColor: 'rgba(255,255,255,0.15)' }}
             >
               <div className="text-4xl mb-3">{icon}</div>
               <h3
@@ -179,7 +190,7 @@ export default function AboutPage() {
               >
                 {title}
               </h3>
-              <p className="text-white/55 text-sm leading-relaxed">{desc}</p>
+              <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>{desc}</p>
             </div>
           ))}
         </div>
@@ -188,8 +199,9 @@ export default function AboutPage() {
       <CautionStripe />
 
       {/* Team + Hiring */}
-      <section className="py-20 px-6" style={{ backgroundColor: '#282020' }}>
-        <div className="max-w-7xl mx-auto">
+      <section className="py-20 px-6 relative overflow-hidden" style={{ backgroundColor: '#282020' }}>
+        <div className="absolute inset-0 texture-overlay" aria-hidden="true" />
+        <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2
               className="text-white text-4xl font-black uppercase tracking-wide mb-3"
@@ -197,7 +209,7 @@ export default function AboutPage() {
             >
               Meet the Team
             </h2>
-            <p className="text-white/55 max-w-xl mx-auto">
+            <p className="max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.55)' }}>
               The people behind every successful job. Experienced, certified, and always ready to roll.
             </p>
           </div>
@@ -211,12 +223,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Hiring modal */}
-      <Modal
-        isOpen={hiringOpen}
-        onClose={() => setHiringOpen(false)}
-        title="Join Our Team"
-      >
+      <Modal isOpen={hiringOpen} onClose={() => setHiringOpen(false)} title="Join Our Team">
         <JobApplicationForm onSuccess={() => setHiringOpen(false)} />
       </Modal>
     </>

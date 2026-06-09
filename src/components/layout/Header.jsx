@@ -22,7 +22,7 @@ export default function Header() {
             <span className="hidden sm:inline text-white/50">|</span>
             <a
               href="tel:7179335655"
-              className="font-bold text-white text-base tracking-wide hover:text-yellow-200 transition-colors"
+              className="font-bold text-white text-base tracking-wide hover:text-[#f7f3ed] transition-colors"
             >
               📞 717-933-5655
             </a>

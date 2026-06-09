@@ -7,7 +7,7 @@ const items = [
 
 export default function TrustBar() {
   return (
-    <div style={{ backgroundColor: '#1e1818' }} className="border-y border-white/10">
+    <div style={{ backgroundColor: '#282020' }} className="border-y border-white/10">
       <div className="max-w-7xl mx-auto px-4 py-4">
         <ul className="flex flex-wrap justify-center md:justify-between gap-x-8 gap-y-3">
           {items.map(({ icon, text }) => (

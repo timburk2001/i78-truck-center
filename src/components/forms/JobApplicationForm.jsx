@@ -3,13 +3,10 @@ import { supabase } from '../../lib/supabase'
 
 const MAX_FILE_SIZE_MB = 10
 
-const inputClass =
-  'w-full px-4 py-3 rounded-md border border-white/20 text-white text-sm placeholder-white/30 focus:outline-none focus:border-red-500 transition-all'
-const selectClass =
-  'w-full px-4 py-3 rounded-md border border-white/20 text-white text-sm focus:outline-none focus:border-red-500 transition-all'
-const labelClass = 'block text-xs font-semibold text-white/60 mb-1 uppercase tracking-wide'
-
-const bgDark = { backgroundColor: '#1e1818' }
+const inputStyle = { backgroundColor: '#282020', borderColor: 'rgba(255,255,255,0.2)' }
+const inputClass = 'w-full px-4 py-3 rounded-md border text-white text-sm placeholder:text-[rgba(255,255,255,0.3)] focus:outline-none focus:border-[#c02026] transition-all'
+const selectClass = 'w-full px-4 py-3 rounded-md border text-white text-sm focus:outline-none focus:border-[#c02026] transition-all'
+const labelClass = 'block text-xs font-semibold mb-1 uppercase tracking-wide'
 
 export default function JobApplicationForm({ onSuccess }) {
   const [form, setForm] = useState({
@@ -44,7 +41,6 @@ export default function JobApplicationForm({ onSuccess }) {
     let resume_url = null
 
     try {
-      // Upload resume if provided
       if (resumeFile) {
         const safeName = form.name.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()
         const path = `applications/${Date.now()}_${safeName}`
@@ -56,17 +52,13 @@ export default function JobApplicationForm({ onSuccess }) {
       }
 
       const { error: insertError } = await supabase.from('job_applications').insert({
-        name: form.name,
-        email: form.email,
-        phone: form.phone || null,
-        position: form.position,
-        cdl_class: form.cdl_class,
+        name: form.name, email: form.email, phone: form.phone || null,
+        position: form.position, cdl_class: form.cdl_class,
         years_experience: parseInt(form.years_experience, 10) || 0,
         resume_url,
       })
 
       if (insertError) throw insertError
-
       setStatus('success')
       setTimeout(() => onSuccess?.(), 2000)
     } catch (err) {
@@ -82,7 +74,7 @@ export default function JobApplicationForm({ onSuccess }) {
         <h3 className="text-white text-2xl font-bold mb-2" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
           Application Received!
         </h3>
-        <p className="text-white/60 text-sm">We'll review your application and be in touch soon.</p>
+        <p className="text-sm" style={{ color: 'rgba(255,255,255,0.6)' }}>We'll review your application and be in touch soon.</p>
       </div>
     )
   }
@@ -90,28 +82,28 @@ export default function JobApplicationForm({ onSuccess }) {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>
       <div>
-        <label htmlFor="job-name" className={labelClass}>Full Name *</label>
+        <label htmlFor="job-name" className={labelClass} style={{ color: 'rgba(255,255,255,0.6)' }}>Full Name *</label>
         <input id="job-name" type="text" required value={form.name} onChange={set('name')}
-          placeholder="John Smith" className={inputClass} style={bgDark} />
+          placeholder="John Smith" className={inputClass} style={inputStyle} />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="job-email" className={labelClass}>Email *</label>
+          <label htmlFor="job-email" className={labelClass} style={{ color: 'rgba(255,255,255,0.6)' }}>Email *</label>
           <input id="job-email" type="email" required value={form.email} onChange={set('email')}
-            placeholder="you@example.com" className={inputClass} style={bgDark} />
+            placeholder="you@example.com" className={inputClass} style={inputStyle} />
         </div>
         <div>
-          <label htmlFor="job-phone" className={labelClass}>Phone</label>
+          <label htmlFor="job-phone" className={labelClass} style={{ color: 'rgba(255,255,255,0.6)' }}>Phone</label>
           <input id="job-phone" type="tel" value={form.phone} onChange={set('phone')}
-            placeholder="(555) 555-5555" className={inputClass} style={bgDark} />
+            placeholder="(555) 555-5555" className={inputClass} style={inputStyle} />
         </div>
       </div>
 
       <div>
-        <label htmlFor="job-position" className={labelClass}>Position Applying For *</label>
+        <label htmlFor="job-position" className={labelClass} style={{ color: 'rgba(255,255,255,0.6)' }}>Position Applying For *</label>
         <select id="job-position" required value={form.position} onChange={set('position')}
-          className={selectClass} style={bgDark}>
+          className={selectClass} style={inputStyle}>
           <option value="" disabled>Select a position…</option>
           <option value="Driver">Driver</option>
           <option value="Recovery Technician">Recovery Technician</option>
@@ -123,9 +115,9 @@ export default function JobApplicationForm({ onSuccess }) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="job-cdl" className={labelClass}>CDL License Class *</label>
+          <label htmlFor="job-cdl" className={labelClass} style={{ color: 'rgba(255,255,255,0.6)' }}>CDL License Class *</label>
           <select id="job-cdl" required value={form.cdl_class} onChange={set('cdl_class')}
-            className={selectClass} style={bgDark}>
+            className={selectClass} style={inputStyle}>
             <option value="None">None</option>
             <option value="A">Class A</option>
             <option value="B">Class B</option>
@@ -133,28 +125,25 @@ export default function JobApplicationForm({ onSuccess }) {
           </select>
         </div>
         <div>
-          <label htmlFor="job-exp" className={labelClass}>Years of Experience *</label>
+          <label htmlFor="job-exp" className={labelClass} style={{ color: 'rgba(255,255,255,0.6)' }}>Years of Experience *</label>
           <input id="job-exp" type="number" required min="0" max="50"
             value={form.years_experience} onChange={set('years_experience')}
-            placeholder="0" className={inputClass} style={bgDark} />
+            placeholder="0" className={inputClass} style={inputStyle} />
         </div>
       </div>
 
       <div>
-        <label htmlFor="job-resume" className={labelClass}>Resume (PDF, DOC — max {MAX_FILE_SIZE_MB}MB)</label>
-        <input
-          id="job-resume"
-          type="file"
-          accept=".pdf,.doc,.docx"
-          onChange={handleFileChange}
-          className="w-full text-sm text-white/60 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:text-white file:cursor-pointer transition-all"
-          style={{ '--file-bg': '#c02026' }}
-        />
-        {fileError && <p className="text-red-400 text-xs mt-1">{fileError}</p>}
+        <label htmlFor="job-resume" className={labelClass} style={{ color: 'rgba(255,255,255,0.6)' }}>
+          Resume (PDF, DOC — max {MAX_FILE_SIZE_MB}MB)
+        </label>
+        <input id="job-resume" type="file" accept=".pdf,.doc,.docx" onChange={handleFileChange}
+          className="w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:text-white file:cursor-pointer transition-all"
+          style={{ color: 'rgba(255,255,255,0.6)', '--file-bg': '#c02026' }} />
+        {fileError && <p className="text-xs mt-1" style={{ color: '#e73525' }}>{fileError}</p>}
       </div>
 
       {errorMsg && (
-        <p className="text-red-400 text-sm text-center">{errorMsg}</p>
+        <p className="text-sm text-center" style={{ color: '#e73525' }}>{errorMsg}</p>
       )}
 
       <button

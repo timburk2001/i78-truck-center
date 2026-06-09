@@ -12,7 +12,7 @@ function InfoItem({ icon, label, children }) {
         {icon}
       </div>
       <div>
-        <p className="text-xs font-bold uppercase tracking-widest text-white/40 mb-0.5">{label}</p>
+        <p className="text-xs font-bold uppercase tracking-widest mb-0.5" style={{ color: 'rgba(255,255,255,0.4)' }}>{label}</p>
         {children}
       </div>
     </div>
@@ -33,6 +33,7 @@ export default function ContactPage() {
           aria-hidden="true"
         />
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(40,32,32,0.85)' }} aria-hidden="true" />
+        <div className="absolute inset-0 texture-overlay" aria-hidden="true" />
         <div className="relative z-10 max-w-3xl mx-auto">
           <h1
             className="text-white text-5xl sm:text-6xl font-black uppercase tracking-wide mb-4"
@@ -40,7 +41,7 @@ export default function ContactPage() {
           >
             Contact Us
           </h1>
-          <p className="text-white/60 text-lg">
+          <p className="text-lg" style={{ color: 'rgba(255,255,255,0.6)' }}>
             Need help right now? Call us directly. For general inquiries, use the form below.
           </p>
           <a
@@ -57,9 +58,19 @@ export default function ContactPage() {
       </section>
 
       {/* Form + info */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12">
-          {/* Contact form — wider column */}
+      <section className="py-20 px-6 relative overflow-hidden" style={{ backgroundColor: '#f7f3ed' }}>
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: "url('/assets/caution-warmgrey.png')",
+            backgroundSize: 'auto 80px',
+            backgroundRepeat: 'repeat',
+            opacity: 0.18,
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12">
+          {/* Contact form */}
           <div className="lg:col-span-3">
             <h2
               className="text-3xl font-black uppercase tracking-wide mb-6"
@@ -88,7 +99,10 @@ export default function ContactPage() {
                   href="https://maps.google.com/?q=120+Klein+Road+Bethel+PA+19507"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white text-sm hover:text-red-400 transition-colors"
+                  className="text-sm transition-colors"
+                  style={{ color: 'rgba(255,255,255,0.85)' }}
+                  onMouseEnter={e => e.target.style.color = '#e73525'}
+                  onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.85)'}
                 >
                   120 Klein Road<br />Bethel, PA 19507
                 </a>
@@ -97,17 +111,22 @@ export default function ContactPage() {
               <InfoItem icon="📞" label="Phone">
                 <a
                   href="tel:7179335655"
-                  className="text-white text-lg font-bold hover:text-red-400 transition-colors"
+                  className="text-white text-lg font-bold transition-colors"
+                  onMouseEnter={e => e.target.style.color = '#e73525'}
+                  onMouseLeave={e => e.target.style.color = 'white'}
                 >
                   717-933-5655
                 </a>
-                <p className="text-white/40 text-xs mt-1">Available 24 hours, 7 days a week</p>
+                <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.4)' }}>Available 24 hours, 7 days a week</p>
               </InfoItem>
 
               <InfoItem icon="✉️" label="Billing & Inquiries">
                 <a
                   href="mailto:billing@i78truckcenter.com"
-                  className="text-white text-sm hover:text-red-400 transition-colors break-all"
+                  className="text-sm transition-colors break-all"
+                  style={{ color: 'rgba(255,255,255,0.85)' }}
+                  onMouseEnter={e => e.target.style.color = '#e73525'}
+                  onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.85)'}
                 >
                   billing@i78truckcenter.com
                 </a>
@@ -115,12 +134,12 @@ export default function ContactPage() {
 
               <InfoItem icon="🕐" label="Hours">
                 <p className="text-white text-sm">24/7 Emergency Dispatch</p>
-                <p className="text-white/40 text-xs mt-1">We never close.</p>
+                <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.4)' }}>We never close.</p>
               </InfoItem>
             </div>
 
-            {/* Map embed placeholder */}
-            <div className="mt-6 rounded-xl overflow-hidden aspect-video bg-gray-200 flex items-center justify-center">
+            {/* Map */}
+            <div className="mt-6 rounded-xl overflow-hidden aspect-video" style={{ backgroundColor: '#dad2c9' }}>
               <iframe
                 title="I78 Truck Center Location"
                 src="https://maps.google.com/maps?q=120+Klein+Road+Bethel+PA+19507&output=embed"

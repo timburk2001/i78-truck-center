@@ -82,8 +82,8 @@ function CalculatorInner() {
             setEstimate(null)
             setError(null)
           }}
-          className="w-full px-4 py-3 rounded-md text-white text-sm border border-white/20 focus:outline-none focus:border-red-600 transition-all"
-          style={{ backgroundColor: '#1e1818' }}
+          className="w-full px-4 py-3 rounded-md text-white text-sm border border-white/20 focus:outline-none focus:border-[#c02026] transition-all"
+          style={{ backgroundColor: '#282020' }}
         >
           <option value="" disabled>Select weight class…</option>
           {SERVICE_OPTIONS.map(({ value, label }) => (
@@ -133,9 +133,9 @@ function CalculatorInner() {
 export default function QuoteCalculator() {
   if (!MAPS_API_KEY) {
     return (
-      <div className="rounded-lg p-6 border border-yellow-500/30 text-center" style={{ backgroundColor: '#1e1818' }}>
-        <p className="text-yellow-400 text-sm mb-3">⚠️ Quote calculator not yet configured.</p>
-        <a href="tel:7179335655" className="text-white font-bold text-lg hover:text-red-400 transition-colors">
+      <div className="rounded-lg p-6 border text-center" style={{ backgroundColor: '#282020', borderColor: 'rgba(192,32,38,0.35)' }}>
+        <p className="text-sm mb-3" style={{ color: '#e73525' }}>⚠️ Quote calculator not yet configured.</p>
+        <a href="tel:7179335655" className="font-bold text-lg text-white hover:brightness-110 transition-all">
           Call 717-933-5655 for an instant quote
         </a>
       </div>

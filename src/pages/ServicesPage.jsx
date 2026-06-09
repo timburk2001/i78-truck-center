@@ -60,6 +60,7 @@ export default function ServicesPage() {
           aria-hidden="true"
         />
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(40,32,32,0.82)' }} aria-hidden="true" />
+        <div className="absolute inset-0 texture-overlay" aria-hidden="true" />
         <div className="relative z-10 max-w-3xl mx-auto">
           <h1
             className="text-white text-5xl sm:text-6xl font-black uppercase tracking-wide mb-4"
@@ -67,7 +68,7 @@ export default function ServicesPage() {
           >
             Our Services
           </h1>
-          <p className="text-white/60 text-lg max-w-xl mx-auto">
+          <p className="text-lg max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.6)' }}>
             From a flat tire to a major highway recovery — we have the equipment, training, and availability to handle it.
           </p>
           <a
@@ -84,8 +85,18 @@ export default function ServicesPage() {
       </section>
 
       {/* Services grid */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-20 px-6 relative overflow-hidden" style={{ backgroundColor: '#f7f3ed' }}>
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: "url('/assets/caution-warmgrey.png')",
+            backgroundSize: 'auto 80px',
+            backgroundRepeat: 'repeat',
+            opacity: 0.18,
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative z-10 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SERVICES.map((service) => (
               <ServiceCard key={service.title} {...service} variant="light" linkTo={null} />
@@ -96,18 +107,19 @@ export default function ServicesPage() {
 
       {/* Bottom CTA */}
       <section
-        className="py-16 px-6 text-center"
+        className="py-16 px-6 text-center relative overflow-hidden"
         style={{ backgroundColor: '#282020' }}
       >
+        <div className="absolute inset-0 texture-overlay" aria-hidden="true" />
         <CautionStripe height="h-6" className="mb-12" />
-        <div className="max-w-2xl mx-auto">
+        <div className="relative z-10 max-w-2xl mx-auto">
           <h2
             className="text-white text-3xl font-black uppercase tracking-wide mb-4"
             style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
           >
             Need a Service Not Listed?
           </h2>
-          <p className="text-white/60 mb-6">
+          <p className="mb-6" style={{ color: 'rgba(255,255,255,0.6)' }}>
             Every situation is unique. Call us and we'll tell you exactly what we can do for you — no run-around, no hold music.
           </p>
           <a

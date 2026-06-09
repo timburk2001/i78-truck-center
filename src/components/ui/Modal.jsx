@@ -57,7 +57,7 @@ export default function Modal({ isOpen, onClose, title, children }) {
         {/* Modal header */}
         <div
           className="flex items-center justify-between px-6 py-4 border-b border-white/10"
-          style={{ backgroundColor: '#1e1818' }}
+          style={{ backgroundColor: '#282020' }}
         >
           <h2
             className="text-white text-2xl font-bold uppercase tracking-wide"

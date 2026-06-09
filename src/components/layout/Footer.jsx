@@ -20,9 +20,11 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer style={{ backgroundColor: '#282020' }} className="text-white">
+    <footer style={{ backgroundColor: '#282020' }} className="text-white relative overflow-hidden">
+      {/* Tire-track texture */}
+      <div className="texture-overlay" aria-hidden="true" />
       {/* Caution stripe top border */}
-      <div className="caution-stripe h-2" />
+      <div className="caution-stripe h-3" />
 
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -84,7 +86,7 @@ export default function Footer() {
               <span>Bethel, PA 19507</span>
               <a
                 href="tel:7179335655"
-                className="font-bold text-white hover:text-red-400 transition-colors text-base"
+                className="font-bold text-white hover:text-[#e73525] transition-colors text-base"
               >
                 717-933-5655
               </a>
@@ -94,7 +96,7 @@ export default function Footer() {
               >
                 billing@i78truckcenter.com
               </a>
-              <span className="text-green-400 font-semibold">⚡ 24/7 Emergency Dispatch</span>
+              <span className="font-semibold" style={{ color: '#e73525' }}>⚡ 24/7 Emergency Dispatch</span>
             </address>
             <a
               href="/assets/state-pricing.pdf"
