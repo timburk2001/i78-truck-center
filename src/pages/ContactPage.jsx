@@ -61,7 +61,11 @@ export default function ContactPage() {
           }}
           aria-hidden="true"
         />
-        <div className="wrap" style={{ position: 'relative', zIndex: 1, maxWidth: 680, textShadow: '0 1px 2px rgba(40,32,32,0.92), 0 3px 22px rgba(40,32,32,0.82)' }}>
+        <div
+          style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(40,32,32,0.85)' }}
+          aria-hidden="true"
+        />
+        <div className="wrap" style={{ position: 'relative', zIndex: 1, maxWidth: 680 }}>
           <span className="eyebrow reveal" style={{ color: 'rgba(247,243,237,0.5)', marginBottom: 20, display: 'inline-flex' }}>
             Get in Touch
           </span>
@@ -140,7 +144,7 @@ export default function ContactPage() {
               >
                 <InfoItem iconName="pin" label="Address">
                   <a
-                    href="https://maps.google.com/?q=120+Kline+Rd+Bethel+PA+19507"
+                    href="https://www.google.com/maps/place/I-78+Truck+Center/@40.4923901,-76.2237416,143m/data=!3m1!1e3!4m15!1m8!3m7!1s0x89c5e2555c1381af:0xe976598fe925020e!2s120+Kline+Rd,+Bethel,+PA+19507!3b1!8m2!3d40.4924198!4d-76.2242854!16s%2Fg%2F11gmfs73sj!3m5!1s0x89c5e25542f3321f:0x9d41625ab30a4feb!8m2!3d40.4924055!4d-76.2242333!16s%2Fg%2F1x5qtqt2!5m1!1e1?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ color: 'rgba(255,255,255,0.8)', fontSize: 14, textDecoration: 'none', transition: 'color 0.15s' }}
@@ -193,7 +197,7 @@ export default function ContactPage() {
               >
                 <iframe
                   title="I78 Truck Center Location"
-                  src="https://maps.google.com/maps?q=120+Kline+Rd+Bethel+PA+19507&output=embed"
+                  src="https://maps.google.com/maps?q=I-78+Truck+Center,+120+Kline+Rd,+Bethel,+PA+19507&output=embed"
                   style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
