@@ -96,10 +96,11 @@ export default function AboutPage() {
         style={{ backgroundColor: '#282020' }}
       >
         <div
-          className="absolute inset-0 opacity-5 bg-center bg-cover"
-          style={{ backgroundImage: "url('/assets/hero-bg.jpg')" }}
+          className="absolute inset-0 bg-center bg-cover"
+          style={{ backgroundImage: "url('/assets/hero-trucks.jpg')" }}
           aria-hidden="true"
         />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(40,32,32,0.82)' }} aria-hidden="true" />
         <div className="relative z-10 max-w-3xl mx-auto">
           <h1
             className="text-white text-5xl sm:text-6xl font-black uppercase tracking-wide mb-4"
@@ -120,13 +121,13 @@ export default function AboutPage() {
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div
-            className="rounded-xl aspect-video flex items-center justify-center"
-            style={{ backgroundColor: '#282020' }}
+            className="rounded-xl aspect-video overflow-hidden"
           >
-            <div className="text-center p-8">
-              <div className="text-6xl mb-3">🏢</div>
-              <p className="text-white/40 text-sm">Shop Photo Coming Soon</p>
-            </div>
+            <img
+              src="/assets/shop-fleet.jpg"
+              alt="I78 Truck Center shop and fleet"
+              className="w-full h-full object-cover"
+            />
           </div>
           <div>
             <h2

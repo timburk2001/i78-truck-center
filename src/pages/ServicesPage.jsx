@@ -4,36 +4,42 @@ import ServiceCard from '../components/ui/ServiceCard'
 const SERVICES = [
   {
     icon: '🚗',
+    image: '/assets/light-duty-scene.jpg',
     title: 'Light Duty Towing',
     description:
       'We provide fast, professional towing for all standard passenger vehicles, SUVs, vans, and motorcycles up to 7,000 lbs. Whether you\'ve broken down on the highway or been involved in a minor accident, our light-duty fleet is ready to respond around the clock. All vehicles are handled with care to prevent additional damage during transport.',
   },
   {
     icon: '🚛',
+    image: '/assets/heavy-recovery.jpg',
     title: 'Heavy Duty Towing',
     description:
       'When standard towing equipment won\'t cut it, you need I78 Truck Center. Our heavy-duty fleet is capable of handling semi-trucks, box trucks, tankers, RVs, and large commercial vehicles. We work closely with state police and fleet managers across Pennsylvania to provide safe, compliant heavy towing services — any hour, any weather.',
   },
   {
     icon: '⛏️',
+    image: '/assets/winter-recovery.jpg',
     title: 'Recovery Services',
     description:
       'Rollovers, off-road incidents, and difficult extraction situations require specialized knowledge and equipment. Our certified recovery technicians are trained in complex rigging and heavy winching operations. From embankment recoveries to multi-vehicle extraction, we approach every scene with safety as the top priority.',
   },
   {
     icon: '🔧',
+    image: '/assets/flatbed-truck.jpg',
     title: 'Emergency Road Service',
     description:
       'Not every breakdown requires a tow. Our roadside assistance service covers tire changes, battery jump-starts, fuel delivery, and lockout assistance — getting you back on the road without the cost and delay of a full tow. We carry standard supplies for the most common roadside emergencies.',
   },
   {
     icon: '🏠',
+    image: '/assets/shop-fleet.jpg',
     title: 'Secure Storage',
     description:
       'When your vehicle needs to stay with us, you can trust it\'s in good hands. Our secure storage yard provides both short-term and long-term options for impounded, recovered, or damaged vehicles. We maintain detailed inventory logs and coordinate directly with insurance companies and legal representatives when required.',
   },
   {
     icon: '🔩',
+    image: '/assets/specialized-lift.jpg',
     title: 'Specialized Hauling & Repairs',
     description:
       'Beyond towing, I78 Truck Center operates a full-service repair shop offering brake service, clutch replacement, tire mounting and balancing, and other major and minor mechanical repairs. Our flatbed fleet also handles equipment transport — whether you\'re moving construction machinery, agricultural equipment, or oversized loads.',
@@ -49,10 +55,11 @@ export default function ServicesPage() {
         style={{ backgroundColor: '#282020' }}
       >
         <div
-          className="absolute inset-0 opacity-5 bg-center bg-cover"
-          style={{ backgroundImage: "url('/assets/hero-bg.jpg')" }}
+          className="absolute inset-0 bg-center bg-cover"
+          style={{ backgroundImage: "url('/assets/heavy-crane.jpg')" }}
           aria-hidden="true"
         />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(40,32,32,0.82)' }} aria-hidden="true" />
         <div className="relative z-10 max-w-3xl mx-auto">
           <h1
             className="text-white text-5xl sm:text-6xl font-black uppercase tracking-wide mb-4"

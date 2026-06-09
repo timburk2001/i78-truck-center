@@ -28,10 +28,11 @@ export default function ContactPage() {
         style={{ backgroundColor: '#282020' }}
       >
         <div
-          className="absolute inset-0 opacity-5 bg-center bg-cover"
-          style={{ backgroundImage: "url('/assets/hero-bg.jpg')" }}
+          className="absolute inset-0 bg-center bg-cover"
+          style={{ backgroundImage: "url('/assets/shop-fleet.jpg')" }}
           aria-hidden="true"
         />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(40,32,32,0.85)' }} aria-hidden="true" />
         <div className="relative z-10 max-w-3xl mx-auto">
           <h1
             className="text-white text-5xl sm:text-6xl font-black uppercase tracking-wide mb-4"

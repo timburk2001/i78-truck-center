@@ -6,12 +6,12 @@ import QuoteCalculator from '../components/calculator/QuoteCalculator'
 import LogoVertical from '../assets/logo-vertical-dark.svg?react'
 
 const SERVICES_PREVIEW = [
-  { icon: '🚗', title: 'Light Duty Towing', description: 'Fast, reliable towing for passenger vehicles, motorcycles, and SUVs up to 7,000 lbs.' },
-  { icon: '🚛', title: 'Heavy Duty Towing', description: 'Equipped for semi-trucks, box trucks, and commercial vehicles requiring specialized rigging.' },
-  { icon: '⛏️', title: 'Recovery Services', description: 'Rollover recovery, off-road winching, and complex extraction from any terrain.' },
-  { icon: '🔧', title: 'Emergency Road Service', description: 'On-scene tire changes, fuel delivery, battery jump-starts, and lockout assistance.' },
-  { icon: '🏠', title: 'Secure Storage', description: 'Indoor and outdoor secured vehicle storage — short-term and long-term options available.' },
-  { icon: '🔩', title: 'Hauling & Repairs', description: 'Flatbed equipment transport plus on-site and shop repairs: brakes, clutches, tires, and more.' },
+  { icon: '🚗', title: 'Light Duty Towing', description: 'Fast, reliable towing for passenger vehicles, motorcycles, and SUVs up to 7,000 lbs.', image: '/assets/light-duty-scene.jpg' },
+  { icon: '🚛', title: 'Heavy Duty Towing', description: 'Equipped for semi-trucks, box trucks, and commercial vehicles requiring specialized rigging.', image: '/assets/heavy-recovery.jpg' },
+  { icon: '⛏️', title: 'Recovery Services', description: 'Rollover recovery, off-road winching, and complex extraction from any terrain.', image: '/assets/winter-recovery.jpg' },
+  { icon: '🔧', title: 'Emergency Road Service', description: 'On-scene tire changes, fuel delivery, battery jump-starts, and lockout assistance.', image: '/assets/flatbed-truck.jpg' },
+  { icon: '🏠', title: 'Secure Storage', description: 'Indoor and outdoor secured vehicle storage — short-term and long-term options available.', image: '/assets/shop-fleet.jpg' },
+  { icon: '🔩', title: 'Hauling & Repairs', description: 'Flatbed equipment transport plus on-site and shop repairs: brakes, clutches, tires, and more.', image: '/assets/specialized-lift.jpg' },
 ]
 
 export default function HomePage() {
@@ -22,18 +22,16 @@ export default function HomePage() {
         className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
         style={{ backgroundColor: '#282020' }}
       >
-        {/* Background texture overlay */}
+        {/* Hero background — real fleet photo */}
         <div
-          className="absolute inset-0 opacity-10 bg-center bg-cover"
-          style={{ backgroundImage: "url('/assets/hero-bg.jpg')" }}
+          className="absolute inset-0 bg-center bg-cover"
+          style={{ backgroundImage: "url('/assets/hero-trucks.jpg')" }}
           aria-hidden="true"
         />
-        {/* Placeholder image area (replace when client provides photos) */}
+        {/* Dark overlay so text stays readable */}
         <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            background: 'radial-gradient(ellipse at center, #c02026 0%, transparent 70%)',
-          }}
+          className="absolute inset-0"
+          style={{ backgroundColor: 'rgba(40,32,32,0.78)' }}
           aria-hidden="true"
         />
 
@@ -167,14 +165,13 @@ export default function HomePage() {
             </Link>
           </div>
           <div
-            className="rounded-xl overflow-hidden aspect-video flex items-center justify-center"
-            style={{ backgroundColor: '#282020' }}
+            className="rounded-xl overflow-hidden aspect-video"
           >
-            {/* Placeholder for a truck/shop photo */}
-            <div className="text-center p-8">
-              <div className="text-6xl mb-3">🏗️</div>
-              <p className="text-white/40 text-sm">Photo Coming Soon</p>
-            </div>
+            <img
+              src="/assets/shop-fleet.jpg"
+              alt="I78 Truck Center shop and fleet"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </section>
