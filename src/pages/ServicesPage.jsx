@@ -75,11 +75,7 @@ export default function ServicesPage() {
           }}
           aria-hidden="true"
         />
-        <div
-          style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(40,32,32,0.82)' }}
-          aria-hidden="true"
-        />
-        <div className="wrap" style={{ position: 'relative', zIndex: 1, maxWidth: 760 }}>
+        <div className="wrap" style={{ position: 'relative', zIndex: 1, maxWidth: 760, textShadow: '0 1px 2px rgba(40,32,32,0.92), 0 3px 22px rgba(40,32,32,0.82)' }}>
           <span className="eyebrow reveal" style={{ color: 'rgba(247,243,237,0.5)', marginBottom: 20, display: 'inline-flex' }}>
             What We Offer
           </span>

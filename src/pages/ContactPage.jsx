@@ -61,11 +61,7 @@ export default function ContactPage() {
           }}
           aria-hidden="true"
         />
-        <div
-          style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(40,32,32,0.85)' }}
-          aria-hidden="true"
-        />
-        <div className="wrap" style={{ position: 'relative', zIndex: 1, maxWidth: 680 }}>
+        <div className="wrap" style={{ position: 'relative', zIndex: 1, maxWidth: 680, textShadow: '0 1px 2px rgba(40,32,32,0.92), 0 3px 22px rgba(40,32,32,0.82)' }}>
           <span className="eyebrow reveal" style={{ color: 'rgba(247,243,237,0.5)', marginBottom: 20, display: 'inline-flex' }}>
             Get in Touch
           </span>
@@ -144,14 +140,14 @@ export default function ContactPage() {
               >
                 <InfoItem iconName="pin" label="Address">
                   <a
-                    href="https://maps.google.com/?q=120+Klein+Road+Bethel+PA+19507"
+                    href="https://maps.google.com/?q=120+Kline+Rd+Bethel+PA+19507"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ color: 'rgba(255,255,255,0.8)', fontSize: 14, textDecoration: 'none', transition: 'color 0.15s' }}
                     onMouseEnter={e => e.target.style.color = 'var(--orange)'}
                     onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.8)'}
                   >
-                    120 Klein Road<br />Bethel, PA 19507
+                    120 Kline Rd<br />Bethel, PA 19507
                   </a>
                 </InfoItem>
 
@@ -197,7 +193,7 @@ export default function ContactPage() {
               >
                 <iframe
                   title="I78 Truck Center Location"
-                  src="https://maps.google.com/maps?q=120+Klein+Road+Bethel+PA+19507&output=embed"
+                  src="https://maps.google.com/maps?q=120+Kline+Rd+Bethel+PA+19507&output=embed"
                   style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

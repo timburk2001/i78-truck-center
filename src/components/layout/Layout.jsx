@@ -12,8 +12,9 @@ export default function Layout() {
     window.scrollTo(0, 0)
   }, [pathname])
 
-  // Re-run scroll reveal on every route change
-  useScrollReveal()
+  // Re-run scroll reveal on every route change (pathname dep) so a freshly
+  // navigated page's .reveal elements get observed instead of staying blank.
+  useScrollReveal(pathname)
 
   return (
     <div className="min-h-screen flex flex-col">

@@ -92,12 +92,7 @@ export default function HomePage() {
           }}
           aria-hidden="true"
         />
-        {/* Dark scrim */}
-        <div
-          style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(40,32,32,0.78)' }}
-          aria-hidden="true"
-        />
-        {/* Hero content */}
+        {/* Hero content — no photo overlay; text legibility via text-shadow */}
         <div
           className="wrap"
           style={{
@@ -109,9 +104,10 @@ export default function HomePage() {
             flexDirection: 'column',
             alignItems: 'center',
             gap: 36,
+            textShadow: '0 1px 2px rgba(40,32,32,0.92), 0 3px 22px rgba(40,32,32,0.82)',
           }}
         >
-          <LogoVertical style={{ width: 'clamp(180px,20vw,260px)', height: 'auto' }} />
+          <LogoVertical style={{ width: 'clamp(180px,20vw,260px)', height: 'auto', filter: 'drop-shadow(0 4px 18px rgba(40,32,32,0.6))' }} />
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <h1

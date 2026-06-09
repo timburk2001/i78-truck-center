@@ -23,23 +23,13 @@ export default function FleetBand() {
           inset: 0,
           backgroundImage: "url('/assets/shop-fleet.jpg')",
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center 80%',
         }}
         aria-hidden="true"
       />
 
-      {/* Gradient overlay — left-heavy */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(to right, rgba(40,32,32,0.92) 0%, rgba(40,32,32,0.75) 50%, rgba(40,32,32,0.35) 100%)',
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Content */}
-      <div className="wrap" style={{ position: 'relative', zIndex: 1, width: '100%', paddingBlock: 64 }}>
+      {/* Content — no photo overlay; legibility via text-shadow */}
+      <div className="wrap" style={{ position: 'relative', zIndex: 1, width: '100%', paddingBlock: 64, textShadow: '0 0 4px rgba(40,32,32,0.95), 0 2px 16px rgba(40,32,32,0.9)' }}>
         <div
           style={{
             display: 'flex',

@@ -1,5 +1,4 @@
 import { Link, NavLink } from 'react-router-dom'
-import LogoVertical from '../../assets/logo-vertical-white.svg?react'
 import Icon from '../ui/Icon'
 
 function FacebookIcon() {
@@ -38,7 +37,7 @@ export default function Footer() {
           {/* Col 1 — Logo + tagline */}
           <div className="flex flex-col gap-4">
             <Link to="/" aria-label="I78 Truck Center Home">
-              <LogoVertical className="h-20 w-auto" />
+              <img src="/assets/logo-stacked-fullcolor-light.svg" alt="I78 Truck Center" className="h-16 w-auto" />
             </Link>
             <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: 14, lineHeight: 1.65 }}>
               Pennsylvania's most trusted towing and recovery service. On the road or off it — we get you moving.
@@ -108,7 +107,7 @@ export default function Footer() {
             <address className="not-italic flex flex-col gap-3" style={{ fontSize: 14 }}>
               <span className="flex items-start gap-2" style={{ color: 'rgba(255,255,255,0.55)' }}>
                 <Icon name="pin" size={15} style={{ marginTop: 2, flexShrink: 0, color: 'var(--orange)' }} />
-                <span>120 Klein Road<br />Bethel, PA 19507</span>
+                <span>120 Kline Rd<br />Bethel, PA 19507</span>
               </span>
               <a
                 href="tel:7179335655"

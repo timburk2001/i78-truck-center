@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import LogoHorizontal from '../../assets/logo-horizontal-white.svg?react'
 import Icon from '../ui/Icon'
 
 const navLinks = [
@@ -41,7 +40,7 @@ export default function Header() {
             <div className="flex items-center gap-3">
               <span className="hidden sm:flex items-center gap-1.5 text-white/80 text-xs">
                 <Icon name="pin" size={14} />
-                120 Klein Road, Bethel, PA 19507
+                120 Kline Rd, Bethel, PA 19507
               </span>
               <span className="hidden sm:block text-white/40">|</span>
               <a
@@ -70,10 +69,13 @@ export default function Header() {
         >
           <div className="wrap w-full flex items-center justify-between">
             <NavLink to="/" aria-label="I78 Truck Center Home">
-              <LogoHorizontal
+              <img
+                src="/assets/logo-horizontal-fullcolor-light.svg"
+                alt="I78 Truck Center"
                 style={{
                   height: shrunk ? 33 : 38,
                   width: 'auto',
+                  display: 'block',
                   transition: 'height 0.25s ease',
                 }}
               />

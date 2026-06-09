@@ -188,11 +188,7 @@ export default function AboutPage() {
           }}
           aria-hidden="true"
         />
-        <div
-          style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(40,32,32,0.82)' }}
-          aria-hidden="true"
-        />
-        <div className="wrap" style={{ position: 'relative', zIndex: 1, maxWidth: 760 }}>
+        <div className="wrap" style={{ position: 'relative', zIndex: 1, maxWidth: 760, textShadow: '0 1px 2px rgba(40,32,32,0.92), 0 3px 22px rgba(40,32,32,0.82)' }}>
           <span className="eyebrow reveal" style={{ color: 'rgba(247,243,237,0.5)', marginBottom: 20, display: 'inline-flex' }}>
             Our Story
           </span>
@@ -254,7 +250,7 @@ export default function AboutPage() {
                 recovery operations.
               </p>
               <p style={{ color: 'var(--ink-55)', fontSize: 16, lineHeight: 1.75 }}>
-                Based at our facility at 120 Klein Road in Bethel, PA, we've built our reputation
+                Based at our facility at 120 Kline Rd in Bethel, PA, we've built our reputation
                 call by call, job by job. Every member of our team understands that when the phone
                 rings, someone is counting on us.
               </p>
