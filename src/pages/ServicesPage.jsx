@@ -1,134 +1,177 @@
-import CautionStripe from '../components/ui/CautionStripe'
 import ServiceCard from '../components/ui/ServiceCard'
+import Icon from '../components/ui/Icon'
 
 const SERVICES = [
   {
-    icon: '🚗',
+    icon: 'car',
     image: '/assets/light-duty-scene.jpg',
     title: 'Light Duty Towing',
     description:
-      'We provide fast, professional towing for all standard passenger vehicles, SUVs, vans, and motorcycles up to 7,000 lbs. Whether you\'ve broken down on the highway or been involved in a minor accident, our light-duty fleet is ready to respond around the clock. All vehicles are handled with care to prevent additional damage during transport.',
+      "We provide fast, professional towing for all standard passenger vehicles, SUVs, vans, and motorcycles up to 7,000 lbs. Whether you've broken down on the highway or been involved in a minor accident, our light-duty fleet is ready to respond around the clock.",
+    linkTo: null,
   },
   {
-    icon: '🚛',
+    icon: 'semi',
     image: '/assets/heavy-recovery.jpg',
     title: 'Heavy Duty Towing',
     description:
-      'When standard towing equipment won\'t cut it, you need I78 Truck Center. Our heavy-duty fleet is capable of handling semi-trucks, box trucks, tankers, RVs, and large commercial vehicles. We work closely with state police and fleet managers across Pennsylvania to provide safe, compliant heavy towing services — any hour, any weather.',
+      "When standard towing equipment won't cut it, you need I78 Truck Center. Our heavy-duty fleet is capable of handling semi-trucks, box trucks, tankers, RVs, and large commercial vehicles — any hour, any weather.",
+    linkTo: null,
   },
   {
-    icon: '⛏️',
+    icon: 'hook',
     image: '/assets/winter-recovery.jpg',
     title: 'Recovery Services',
     description:
-      'Rollovers, off-road incidents, and difficult extraction situations require specialized knowledge and equipment. Our certified recovery technicians are trained in complex rigging and heavy winching operations. From embankment recoveries to multi-vehicle extraction, we approach every scene with safety as the top priority.',
+      'Rollovers, off-road incidents, and difficult extraction situations require specialized knowledge and equipment. Our certified recovery technicians are trained in complex rigging and heavy winching operations.',
+    linkTo: null,
   },
   {
-    icon: '🔧',
+    icon: 'cone',
     image: '/assets/flatbed-truck.jpg',
     title: 'Emergency Road Service',
     description:
-      'Not every breakdown requires a tow. Our roadside assistance service covers tire changes, battery jump-starts, fuel delivery, and lockout assistance — getting you back on the road without the cost and delay of a full tow. We carry standard supplies for the most common roadside emergencies.',
+      'Not every breakdown requires a tow. Our roadside assistance service covers tire changes, battery jump-starts, fuel delivery, and lockout assistance — getting you back on the road fast.',
+    linkTo: null,
   },
   {
-    icon: '🏠',
+    icon: 'shop',
     image: '/assets/shop-fleet.jpg',
     title: 'Secure Storage',
     description:
-      'When your vehicle needs to stay with us, you can trust it\'s in good hands. Our secure storage yard provides both short-term and long-term options for impounded, recovered, or damaged vehicles. We maintain detailed inventory logs and coordinate directly with insurance companies and legal representatives when required.',
+      "When your vehicle needs to stay with us, you can trust it's in good hands. Our secure storage yard provides both short-term and long-term options for impounded, recovered, or damaged vehicles.",
+    linkTo: null,
   },
   {
-    icon: '🔩',
+    icon: 'wrench',
     image: '/assets/specialized-lift.jpg',
     title: 'Specialized Hauling & Repairs',
     description:
-      'Beyond towing, I78 Truck Center operates a full-service repair shop offering brake service, clutch replacement, tire mounting and balancing, and other major and minor mechanical repairs. Our flatbed fleet also handles equipment transport — whether you\'re moving construction machinery, agricultural equipment, or oversized loads.',
+      'Beyond towing, I78 Truck Center operates a full-service repair shop offering brake service, clutch replacement, tire mounting and balancing, and other major mechanical repairs. Our flatbed fleet handles equipment transport too.',
+    linkTo: null,
   },
 ]
 
 export default function ServicesPage() {
   return (
     <>
-      {/* Page hero */}
+      {/* ── HERO ─────────────────────────────────────────── */}
       <section
-        className="py-20 px-6 text-center relative overflow-hidden"
-        style={{ backgroundColor: '#282020' }}
+        style={{
+          position: 'relative',
+          paddingBlock: 96,
+          textAlign: 'center',
+          backgroundColor: 'var(--ink)',
+          overflow: 'hidden',
+        }}
       >
         <div
-          className="absolute inset-0 bg-center bg-cover"
-          style={{ backgroundImage: "url('/assets/heavy-crane.jpg')" }}
-          aria-hidden="true"
-        />
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(40,32,32,0.82)' }} aria-hidden="true" />
-        <div className="absolute inset-0 texture-overlay" aria-hidden="true" />
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <h1
-            className="text-white text-5xl sm:text-6xl font-black uppercase tracking-wide mb-4"
-            style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
-          >
-            Our Services
-          </h1>
-          <p className="text-lg max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.6)' }}>
-            From a flat tire to a major highway recovery — we have the equipment, training, and availability to handle it.
-          </p>
-          <a
-            href="tel:7179335655"
-            className="inline-block mt-6 px-8 py-4 rounded-lg text-white font-bold text-lg uppercase tracking-wide hover:brightness-110 transition-all"
-            style={{ backgroundColor: '#c02026', fontFamily: "'Barlow Condensed', sans-serif" }}
-          >
-            📞 Call for Immediate Service
-          </a>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <CautionStripe height="h-6" />
-        </div>
-      </section>
-
-      {/* Services grid */}
-      <section className="py-20 px-6 relative overflow-hidden" style={{ backgroundColor: '#f7f3ed' }}>
-        <div
-          className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: "url('/assets/caution-warmgrey.png')",
-            backgroundSize: 'auto 80px',
-            backgroundRepeat: 'repeat',
-            opacity: 0.18,
+            position: 'absolute',
+            inset: 0,
+            backgroundImage: "url('/assets/heavy-crane.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
           aria-hidden="true"
         />
-        <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SERVICES.map((service) => (
-              <ServiceCard key={service.title} {...service} variant="light" linkTo={null} />
+        <div
+          style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(40,32,32,0.82)' }}
+          aria-hidden="true"
+        />
+        <div className="wrap" style={{ position: 'relative', zIndex: 1, maxWidth: 760 }}>
+          <span className="eyebrow reveal" style={{ color: 'rgba(247,243,237,0.5)', marginBottom: 20, display: 'inline-flex' }}>
+            What We Offer
+          </span>
+          <h1
+            className="reveal d1"
+            style={{
+              color: 'white',
+              fontSize: 'clamp(36px,5vw,72px)',
+              marginTop: 16,
+              marginBottom: 16,
+            }}
+          >
+            Our Services
+          </h1>
+          <p className="reveal d2" style={{ color: 'rgba(247,243,237,0.65)', fontSize: 18, lineHeight: 1.7, marginBottom: 32 }}>
+            From a flat tire to a major highway recovery — we have the equipment, training,
+            and availability to handle it.
+          </p>
+          <div className="reveal d3">
+            <a href="tel:7179335655" className="btn-red">
+              <Icon name="phone" size={16} />
+              Call for Immediate Service
+            </a>
+          </div>
+        </div>
+
+        <div
+          className="caution-stripe"
+          aria-hidden="true"
+          style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 18, zIndex: 2 }}
+        />
+      </section>
+
+      {/* ── SERVICES GRID ────────────────────────────────── */}
+      <section style={{ backgroundColor: 'var(--cream)', position: 'relative', overflow: 'hidden' }}>
+        {/* Grunge tire texture — subtle, reads on cream */}
+        <div className="texture-overlay is-soft" aria-hidden="true" />
+        <div className="wrap" style={{ paddingBlock: 96, position: 'relative', zIndex: 1 }}>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3,1fr)',
+              gap: 28,
+              paddingTop: 32,
+            }}
+            className="svc-grid"
+          >
+            {SERVICES.map((service, i) => (
+              <div key={service.title} className={`reveal d${Math.min(i + 1, 5)}`}>
+                <ServiceCard {...service} />
+              </div>
             ))}
           </div>
         </div>
+
+        <style>{`
+          @media (max-width: 900px) { .svc-grid { grid-template-columns: repeat(2,1fr) !important; } }
+          @media (max-width: 560px) { .svc-grid { grid-template-columns: 1fr !important; } }
+        `}</style>
       </section>
 
-      {/* Bottom CTA */}
+      {/* ── BOTTOM CTA ───────────────────────────────────── */}
       <section
-        className="py-16 px-6 text-center relative overflow-hidden"
-        style={{ backgroundColor: '#282020' }}
+        style={{
+          backgroundColor: 'var(--ink)',
+          position: 'relative',
+          overflow: 'hidden',
+          textAlign: 'center',
+        }}
       >
-        <div className="absolute inset-0 texture-overlay" aria-hidden="true" />
-        <CautionStripe height="h-6" className="mb-12" />
-        <div className="relative z-10 max-w-2xl mx-auto">
-          <h2
-            className="text-white text-3xl font-black uppercase tracking-wide mb-4"
-            style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
-          >
-            Need a Service Not Listed?
-          </h2>
-          <p className="mb-6" style={{ color: 'rgba(255,255,255,0.6)' }}>
-            Every situation is unique. Call us and we'll tell you exactly what we can do for you — no run-around, no hold music.
-          </p>
-          <a
-            href="tel:7179335655"
-            className="inline-block px-10 py-4 rounded-lg text-white font-black text-xl uppercase tracking-wide hover:brightness-110 transition-all"
-            style={{ backgroundColor: '#c02026', fontFamily: "'Barlow Condensed', sans-serif" }}
-          >
-            📞 717-933-5655
-          </a>
+        <div className="wrap" style={{ paddingBlock: 72, position: 'relative', zIndex: 1 }}>
+          <div className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'center' }}>
+            <h2
+              style={{
+                color: 'white',
+                fontSize: 'clamp(24px,3.5vw,44px)',
+                maxWidth: 600,
+              }}
+            >
+              Need a Service Not Listed?
+            </h2>
+            <p style={{ color: 'rgba(247,243,237,0.6)', fontSize: 16, lineHeight: 1.7, maxWidth: 480 }}>
+              Every situation is unique. Call us and we'll tell you exactly what we can do for
+              you — no run-around, no hold music.
+            </p>
+            <div style={{ marginTop: 12 }}>
+              <a href="tel:7179335655" className="btn-red">
+                <Icon name="phone" size={16} />
+                717-933-5655
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </>

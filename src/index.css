@@ -1,59 +1,226 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
-  /* Official I78 Brand Colors (from Brand Identity Guidelines) */
-  --color-brand-red: #c02026;       /* Primary Red */
-  --color-brand-orange: #e73525;    /* Secondary Red/Orange */
-  --color-brand-navy: #123c5f;      /* Navy Blue */
-  --color-brand-dark: #282020;      /* Near-Black */
-  --color-brand-warm-gray: #dad2c9; /* Warm Gray */
-  --color-brand-cream: #f7f3ed;     /* Off-White / Cream */
-  --font-heading: 'Barlow Condensed', sans-serif;
-  --font-body: 'Barlow', sans-serif;
+  --color-brand-red:       #c02026;
+  --color-brand-orange:    #e73525;
+  --color-brand-navy:      #123c5f;
+  --color-brand-dark:      #282020;
+  --color-brand-warm-gray: #dad2c9;
+  --color-brand-cream:     #f7f3ed;
+  --font-display: 'Archivo', 'Arial Narrow', sans-serif;
+  --font-body:    'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
+:root {
+  --red:    #c02026;
+  --orange: #e73525;
+  --navy:   #123c5f;
+  --ink:    #282020;
+  --grey:   #dad2c9;
+  --cream:  #f7f3ed;
+  --ink-90: rgba(40,32,32,.90);
+  --ink-72: rgba(40,32,32,.72);
+  --ink-55: rgba(40,32,32,.55);
+  --cream-72: rgba(247,243,237,.72);
+  --cream-55: rgba(247,243,237,.55);
+  --maxw: 1240px;
+  --pad:  clamp(20px, 5vw, 72px);
+  --ff-display: "Archivo","Arial Narrow",sans-serif;
+  --ff-body:    "Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Barlow', sans-serif;
-  background-color: #f7f3ed;
-  color: #282020;
+  font-family: var(--ff-body);
+  background-color: var(--cream);
+  color: var(--ink);
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.01em;
   margin: 0;
 }
 
-/* Brand caution stripe — uses the actual brand PNG (tiles horizontally) */
-.caution-stripe {
-  background-image: url('/assets/caution-orange.png');
-  background-size: auto 100%;
-  background-repeat: repeat-x;
+p { margin: 0; }
+
+/* ─── Container ─── */
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-inline: var(--pad);
 }
 
-.caution-stripe-grey {
-  background-image: url('/assets/caution-warmgrey.png');
-  background-size: auto 100%;
-  background-repeat: repeat-x;
+/* ─── Eyebrow ─── */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--ff-body);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 34px;
+  height: 3px;
+  background: var(--red);
+  flex-shrink: 0;
 }
 
-.caution-stripe-dark {
-  background-image: url('/assets/caution-black.png');
-  background-size: auto 100%;
-  background-repeat: repeat-x;
+/* ─── Buttons ─── */
+.btn-red {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 28px;
+  background: var(--red);
+  color: white;
+  font-family: var(--ff-body);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  line-height: 1;
 }
+.btn-red:hover { background: var(--orange); transform: translateY(-2px); }
 
-/* Tire-track texture overlay for dark sections */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--cream);
+  font-family: var(--ff-body);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border: 1.5px solid rgba(247,243,237,0.5);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  line-height: 1;
+}
+.btn-ghost:hover { background: rgba(247,243,237,0.08); border-color: var(--cream); }
+
+.btn-ghost-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--ff-body);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border: 1.5px solid rgba(40,32,32,0.3);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  line-height: 1;
+}
+.btn-ghost-dark:hover { background: rgba(40,32,32,0.04); border-color: var(--ink); }
+
+/* ─── Texture overlay — cover fill, not tiling ─── */
 .texture-overlay {
   position: absolute;
   inset: 0;
   background-image: url('/assets/brand-texture.jpg');
-  background-size: 550px 550px;
-  background-repeat: repeat;
-  opacity: 0.06;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.07;
   pointer-events: none;
 }
+/* Lighter variant for cream/content sections where the grunge should be a whisper */
+.texture-overlay.is-soft { opacity: 0.05; }
+
+/* ─── Caution stripe (brand hazard pattern) ─────────────────────────────────
+   NON-repeating by design: a fixed set of diagonal stripes that EXPANDS to fill
+   its container. It never tiles — make the band wider and the stripes get wider,
+   the count stays the same. Drive size from the element it's placed on. */
+.caution-stripe,
+.caution-stripe-grey,
+.caution-stripe-dark,
+.caution-stripe-faint {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.caution-stripe {
+  background-color: var(--cream);
+  background-image: linear-gradient(
+    135deg,
+    var(--red) 0 5%, transparent 5% 10%, var(--red) 10% 15%, transparent 15% 20%,
+    var(--red) 20% 25%, transparent 25% 30%, var(--red) 30% 35%, transparent 35% 40%,
+    var(--red) 40% 45%, transparent 45% 50%, var(--red) 50% 55%, transparent 55% 60%,
+    var(--red) 60% 65%, transparent 65% 70%, var(--red) 70% 75%, transparent 75% 80%,
+    var(--red) 80% 85%, transparent 85% 90%, var(--red) 90% 95%, transparent 95% 100%
+  );
+}
+.caution-stripe-grey {
+  background-color: var(--cream);
+  background-image: linear-gradient(
+    135deg,
+    var(--grey) 0 5%, transparent 5% 10%, var(--grey) 10% 15%, transparent 15% 20%,
+    var(--grey) 20% 25%, transparent 25% 30%, var(--grey) 30% 35%, transparent 35% 40%,
+    var(--grey) 40% 45%, transparent 45% 50%, var(--grey) 50% 55%, transparent 55% 60%,
+    var(--grey) 60% 65%, transparent 65% 70%, var(--grey) 70% 75%, transparent 75% 80%,
+    var(--grey) 80% 85%, transparent 85% 90%, var(--grey) 90% 95%, transparent 95% 100%
+  );
+}
+.caution-stripe-dark {
+  background-color: var(--ink);
+  background-image: linear-gradient(
+    135deg,
+    var(--red) 0 5%, transparent 5% 10%, var(--red) 10% 15%, transparent 15% 20%,
+    var(--red) 20% 25%, transparent 25% 30%, var(--red) 30% 35%, transparent 35% 40%,
+    var(--red) 40% 45%, transparent 45% 50%, var(--red) 50% 55%, transparent 55% 60%,
+    var(--red) 60% 65%, transparent 65% 70%, var(--red) 70% 75%, transparent 75% 80%,
+    var(--red) 80% 85%, transparent 85% 90%, var(--red) 90% 95%, transparent 95% 100%
+  );
+}
+/* Faint translucent variant — overlay on a solid color section (e.g. the red CTA) */
+.caution-stripe-faint {
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0 5%, transparent 5% 10%, rgba(255, 255, 255, 0.1) 10% 15%, transparent 15% 20%,
+    rgba(255, 255, 255, 0.1) 20% 25%, transparent 25% 30%, rgba(255, 255, 255, 0.1) 30% 35%, transparent 35% 40%,
+    rgba(255, 255, 255, 0.1) 40% 45%, transparent 45% 50%, rgba(255, 255, 255, 0.1) 50% 55%, transparent 55% 60%,
+    rgba(255, 255, 255, 0.1) 60% 65%, transparent 65% 70%, rgba(255, 255, 255, 0.1) 70% 75%, transparent 75% 80%,
+    rgba(255, 255, 255, 0.1) 80% 85%, transparent 85% 90%, rgba(255, 255, 255, 0.1) 90% 95%, transparent 95% 100%
+  );
+}
+
+/* ─── Scroll reveal ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+.d1 { transition-delay: 0.08s; }
+.d2 { transition-delay: 0.16s; }
+.d3 { transition-delay: 0.24s; }
+.d4 { transition-delay: 0.32s; }
+.d5 { transition-delay: 0.40s; }

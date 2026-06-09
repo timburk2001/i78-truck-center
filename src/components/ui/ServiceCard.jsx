@@ -1,56 +1,123 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Icon from './Icon'
 
-export default function ServiceCard({ icon, title, description, linkTo = '/services', variant = 'dark', image }) {
-  const isDark = variant === 'dark'
+export default function ServiceCard({ icon, title, description, linkTo = '/services', image }) {
+  const [hovered, setHovered] = useState(false)
 
   const card = (
-    <div
-      className="group rounded-lg border transition-all duration-200 h-full flex flex-col overflow-hidden"
-      style={isDark
-        ? { borderColor: 'rgba(255,255,255,0.1)', backgroundColor: 'rgba(255,255,255,0.04)' }
-        : { borderColor: '#dad2c9', backgroundColor: '#f7f3ed' }
-      }
-      onMouseEnter={e => e.currentTarget.style.borderColor = '#c02026'}
-      onMouseLeave={e => e.currentTarget.style.borderColor = isDark ? 'rgba(255,255,255,0.1)' : '#dad2c9'}
+    <article
+      style={{
+        background: 'white',
+        border: '1px solid var(--grey)',
+        boxShadow: hovered
+          ? '0 12px 32px rgba(40,32,32,0.14)'
+          : '0 2px 12px rgba(40,32,32,0.08)',
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+        transition: 'box-shadow 0.2s ease, transform 0.2s ease',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
-      {image && (
-        <div className="aspect-video overflow-hidden flex-shrink-0">
+      {/* Image — separate overflow:hidden so badge (outside this div) can overlap */}
+      <div style={{ overflow: 'hidden', flexShrink: 0 }}>
+        {image ? (
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            style={{
+              display: 'block',
+              width: '100%',
+              aspectRatio: '16 / 10',
+              objectFit: 'cover',
+              transform: hovered ? 'scale(1.05)' : 'scale(1)',
+              transition: 'transform 0.4s ease',
+            }}
           />
-        </div>
-      )}
-      <div className="p-6 flex flex-col gap-3 flex-1">
+        ) : (
+          <div style={{ aspectRatio: '16 / 10', background: 'var(--grey)', opacity: 0.4 }} />
+        )}
+      </div>
+
+      {/* Card body — badge sits here with negative top margin to straddle image edge */}
+      <div
+        style={{
+          padding: '0 24px 28px',
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 12,
+        }}
+      >
+        {/* Red icon badge — negative margin-top pulls it up over the image boundary */}
         <div
-          className="w-12 h-12 rounded-md flex items-center justify-center text-2xl flex-shrink-0"
-          style={{ backgroundColor: '#c02026' }}
-          aria-hidden="true"
+          style={{
+            width: 56,
+            height: 56,
+            background: 'var(--red)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+            marginTop: -28,   /* Half the badge height — straddles image/body boundary */
+            marginLeft: 0,
+            position: 'relative',
+            zIndex: 2,
+          }}
         >
-          {icon}
+          <Icon name={icon} size={24} style={{ color: 'white' }} />
         </div>
+
         <h3
-          className="text-xl font-bold uppercase tracking-wide"
-          style={{ color: isDark ? '#ffffff' : '#282020', fontFamily: "'Barlow Condensed', sans-serif" }}
+          style={{
+            fontFamily: 'var(--ff-display)',
+            fontWeight: 800,
+            fontSize: 20,
+            lineHeight: 1.1,
+            color: 'var(--ink)',
+            margin: 0,
+          }}
         >
           {title}
         </h3>
-        <p className="text-sm leading-relaxed flex-1" style={{ color: isDark ? 'rgba(255,255,255,0.6)' : 'rgba(40,32,32,0.65)' }}>
+        <p
+          style={{
+            color: 'var(--ink-55)',
+            fontSize: 15,
+            lineHeight: 1.65,
+            margin: 0,
+            flex: 1,
+          }}
+        >
           {description}
         </p>
         {linkTo && (
-          <span className="text-sm font-semibold mt-1 flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: '#c02026' }}>
-            Learn More →
+          <span
+            style={{
+              color: 'var(--red)',
+              fontSize: 13,
+              fontWeight: 700,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              textTransform: 'uppercase',
+              letterSpacing: '0.04em',
+              marginTop: 4,
+            }}
+          >
+            Learn More
+            <Icon name="arrow" size={14} />
           </span>
         )}
       </div>
-    </div>
+    </article>
   )
 
   if (linkTo) {
     return (
-      <Link to={linkTo} className="block h-full no-underline">
+      <Link to={linkTo} style={{ display: 'block', textDecoration: 'none' }}>
         {card}
       </Link>
     )
