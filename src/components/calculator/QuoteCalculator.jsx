@@ -6,8 +6,8 @@ import { MAPS_API_KEY, MAPS_LIBRARIES, DEPOT_ADDRESS, RATES } from '../../lib/go
 import { useDistanceMatrix } from '../../hooks/useDistanceMatrix'
 
 const SERVICE_OPTIONS = [
-  { value: 'light', label: 'Light Duty (up to 7,000 lbs) — $120/hr' },
-  { value: 'medium', label: 'Medium Duty (up to 17,000 lbs) — $185/hr' },
+  { value: 'light', label: 'Light Duty (up to 7,000 lbs)' },
+  { value: 'medium', label: 'Medium Duty (up to 17,000 lbs)' },
   { value: 'heavy', label: 'Heavy Duty (Over 17,000 lbs) — Call for Price' },
 ]
 
