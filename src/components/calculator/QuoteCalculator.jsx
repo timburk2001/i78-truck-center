@@ -143,7 +143,7 @@ export default function QuoteCalculator() {
   }
 
   return (
-    <LoadScript apiKey={MAPS_API_KEY} libraries={MAPS_LIBRARIES}>
+    <LoadScript googleMapsApiKey={MAPS_API_KEY} libraries={MAPS_LIBRARIES}>
       <CalculatorInner />
     </LoadScript>
   )
