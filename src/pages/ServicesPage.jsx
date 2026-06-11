@@ -28,7 +28,7 @@ const SERVICES = [
   },
   {
     icon: 'cone',
-    image: '/assets/flatbed-truck.jpg',
+    image: '/assets/IMG_9854.jpeg',
     title: 'Emergency Road Service',
     description:
       'Not every breakdown requires a tow. Our roadside assistance service covers tire changes, battery jump-starts, fuel delivery, and lockout assistance — getting you back on the road fast.',

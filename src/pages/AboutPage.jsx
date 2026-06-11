@@ -237,31 +237,31 @@ export default function AboutPage() {
           >
             <div className="reveal" style={{ overflow: 'hidden' }}>
               <img
-                src="/assets/shop-fleet.jpg"
+                src="/assets/IMG_6770.jpeg"
                 alt="I78 Truck Center shop and fleet"
                 style={{ display: 'block', width: '100%', aspectRatio: '16/9', objectFit: 'cover' }}
               />
             </div>
             <div className="reveal d1" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-              <span className="eyebrow" style={{ color: 'var(--ink-55)' }}>Est. Bethel, PA</span>
+              <span className="eyebrow" style={{ color: 'var(--ink-55)' }}>Est. 2005</span>
               <h2 style={{ color: 'var(--ink)', fontSize: 'clamp(28px,3.5vw,44px)', marginTop: 12 }}>
                 Our Story
               </h2>
               <p style={{ color: 'var(--ink-55)', fontSize: 16, lineHeight: 1.75 }}>
-                I78 Truck Center began with a single truck and an unwavering commitment to showing
-                up — rain, snow, or the middle of the night. What started as a local roadside
-                assistance service has grown into one of the region's most capable towing and
-                recovery operations.
+                Established in 2005 as a small heavy duty truck repair shop, I-78 Truck Center grew
+                into a full service truck center focusing on major and minor repair. In early 2012,
+                I-78 Truck Center added its first tow truck.
               </p>
               <p style={{ color: 'var(--ink-55)', fontSize: 16, lineHeight: 1.75 }}>
-                Based at our facility at 120 Kline Rd in Bethel, PA, we've built our reputation
-                call by call, job by job. Every member of our team understands that when the phone
-                rings, someone is counting on us.
+                Brothers Shawn and Sheldon worked tirelessly to build a reputable and prosperous
+                towing and recovery division, while maintaining the repair side of the business. In
+                2025, a mutual decision to separate the two sides of the business was reached.
+                Sheldon would be full owner of the repair shop (Nolt Truck Service), and Shawn the
+                towing and recovery at I-78 Truck Center.
               </p>
               <p style={{ color: 'var(--ink-55)', fontSize: 16, lineHeight: 1.75 }}>
-                From state police-mandated recovery scenes on I-78 to getting a family back on the
-                road after a breakdown — we treat every job with the same level of professionalism
-                and urgency.
+                No matter the situation, I-78 Truck Center has the fleet of recovery equipment to
+                help — from rollbacks to rotators we are ready to roll out and help!
               </p>
             </div>
           </div>

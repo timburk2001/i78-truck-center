@@ -32,7 +32,7 @@ const SERVICES_PREVIEW = [
     icon: 'cone',
     title: 'Emergency Road Service',
     description: 'On-scene tire changes, fuel delivery, battery jump-starts, and lockout assistance.',
-    image: '/assets/flatbed-truck.jpg',
+    image: '/assets/IMG_9854.jpeg',
   },
   {
     icon: 'shop',
