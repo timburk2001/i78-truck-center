@@ -20,7 +20,7 @@ const SERVICES_PREVIEW = [
     icon: 'semi',
     title: 'Heavy Duty Towing',
     description: 'Equipped for semi-trucks, box trucks, and commercial vehicles requiring specialized rigging.',
-    image: '/assets/heavy-recovery.jpg',
+    image: '/assets/heavy-duty-tow.jpg',
   },
   {
     icon: 'hook',

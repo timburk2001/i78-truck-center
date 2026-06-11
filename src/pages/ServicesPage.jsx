@@ -12,7 +12,7 @@ const SERVICES = [
   },
   {
     icon: 'semi',
-    image: '/assets/heavy-recovery.jpg',
+    image: '/assets/heavy-duty-tow.jpg',
     title: 'Heavy Duty Towing',
     description:
       "When standard towing equipment won't cut it, you need I78 Truck Center. Our heavy-duty fleet is capable of handling semi-trucks, box trucks, tankers, RVs, and large commercial vehicles — any hour, any weather.",
