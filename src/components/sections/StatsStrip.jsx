@@ -2,7 +2,7 @@ import Icon from '../ui/Icon'
 
 const STATS = [
   { icon: 'clock', value: '24/7',     label: 'Emergency Dispatch' },
-  { icon: 'hook',  value: '50-Ton',   label: 'Rotator Capacity' },
+  { icon: 'hook',  value: 'Heavy Duty', label: 'Rotator' },
   { icon: 'semi',  value: '1–8 Axle', label: 'Any Configuration' },
   { icon: 'route', value: 'I-78',     label: 'Corridor Coverage' },
 ]

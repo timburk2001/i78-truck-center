@@ -1,7 +1,7 @@
 const FLEET_STATS = [
   { value: '20+',           label: 'Trucks in Fleet' },
   { value: 'PA-Certified',  label: 'Every Technician' },
-  { value: '50-Ton',        label: 'Max Recovery Capacity' },
+  { value: 'Heavy Duty',    label: 'Max Recovery Capacity' },
 ]
 
 export default function FleetBand() {

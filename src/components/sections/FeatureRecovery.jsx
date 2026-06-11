@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import Icon from '../ui/Icon'
 
 const CAP_LIST = [
-  { icon: 'semi',  text: '50-Ton Rotator' },
+  { icon: 'semi',  text: 'Heavy Duty Rotator' },
   { icon: 'hook',  text: 'Heavy Winching & Rigging' },
   { icon: 'clock', text: '24/7 Rapid Response' },
   { icon: 'pin',   text: 'I-78 Corridor & Beyond' },
@@ -62,7 +62,7 @@ export default function FeatureRecovery() {
             />
             <img
               src="/assets/heavy-recovery.jpg"
-              alt="Heavy recovery operation with 50-ton rotator"
+              alt="Heavy recovery operation with heavy duty rotator"
               style={{
                 display: 'block',
                 width: '100%',
@@ -87,7 +87,7 @@ export default function FeatureRecovery() {
               }}
             >
               When It Takes a{' '}
-              <span style={{ color: 'var(--orange)' }}>50-Ton Rotator</span>
+              <span style={{ color: 'var(--orange)' }}>Heavy Duty Rotator</span>
             </h2>
 
             <p style={{ color: 'rgba(247,243,237,0.65)', fontSize: 16, lineHeight: 1.7 }}>

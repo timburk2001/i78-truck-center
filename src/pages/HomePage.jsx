@@ -62,7 +62,7 @@ const WHY_ITEMS = [
   {
     icon: 'wrench',
     title: 'Full-Service Capable',
-    body: 'From tire changes to 50-ton rotator recovery — we have the right equipment for the job.',
+    body: 'From tire changes to heavy duty rotator recovery — we have the right equipment for the job.',
   },
 ]
 
