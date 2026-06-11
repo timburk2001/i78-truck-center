@@ -20,7 +20,7 @@ const SERVICES = [
   },
   {
     icon: 'hook',
-    image: '/assets/winter-recovery.jpg',
+    image: '/assets/IMG_7960.JPG',
     title: 'Recovery Services',
     description:
       'Rollovers, off-road incidents, and difficult extraction situations require specialized knowledge and equipment. Our certified recovery technicians are trained in complex rigging and heavy winching operations.',
@@ -44,7 +44,7 @@ const SERVICES = [
   },
   {
     icon: 'wrench',
-    image: '/assets/specialized-lift.jpg',
+    image: '/assets/IMG_8429.jpeg',
     title: 'Specialized Hauling & Repairs',
     description:
       'Beyond towing, I78 Truck Center operates a full-service repair shop offering brake service, clutch replacement, tire mounting and balancing, and other major mechanical repairs. Our flatbed fleet handles equipment transport too.',

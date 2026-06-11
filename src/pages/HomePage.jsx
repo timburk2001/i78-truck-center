@@ -26,7 +26,7 @@ const SERVICES_PREVIEW = [
     icon: 'hook',
     title: 'Recovery Services',
     description: 'Rollover recovery, off-road winching, and complex extraction from any terrain.',
-    image: '/assets/winter-recovery.jpg',
+    image: '/assets/IMG_7960.JPG',
   },
   {
     icon: 'cone',
@@ -44,7 +44,7 @@ const SERVICES_PREVIEW = [
     icon: 'wrench',
     title: 'Hauling & Repairs',
     description: 'Flatbed equipment transport plus on-site and shop repairs: brakes, clutches, tires, and more.',
-    image: '/assets/specialized-lift.jpg',
+    image: '/assets/IMG_8429.jpeg',
   },
 ]
 
