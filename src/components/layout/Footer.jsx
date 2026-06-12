@@ -144,9 +144,23 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }} className="py-4 px-6">
-        <p className="text-center" style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12 }}>
-          © {year} I78 Truck Center. All rights reserved. Licensed & Insured in Pennsylvania. · USDOT 682054 · MC 317524
-        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+          <p className="text-center" style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12 }}>
+            © {year} I78 Truck Center. All rights reserved. Licensed & Insured in Pennsylvania. · USDOT 682054 · MC 317524
+          </p>
+          <a
+            href="https://burkdigital.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.3)', fontSize: 12, textDecoration: 'none', transition: 'color 0.15s' }}
+            onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.65)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.3)'}
+          >
+            Powered & Designed by
+            <img src="/assets/burkdigital-logo.png" alt="BURK Digital" style={{ height: 14, width: 'auto', opacity: 0.6 }} />
+            <span style={{ fontWeight: 600 }}>BURK Digital</span>
+          </a>
+        </div>
       </div>
     </footer>
   )
