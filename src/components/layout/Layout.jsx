@@ -1,6 +1,8 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 import useScrollReveal from '../../hooks/useScrollReveal'
+import { localBusinessJsonLd } from '../../lib/site'
 import Header from './Header'
 import Footer from './Footer'
 
@@ -18,6 +20,9 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(localBusinessJsonLd)}</script>
+      </Helmet>
       <Header />
       <main className="flex-1">
         <Outlet />

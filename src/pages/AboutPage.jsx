@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Seo from '../components/Seo'
 import Modal from '../components/ui/Modal'
 import JobApplicationForm from '../components/forms/JobApplicationForm'
 import Icon from '../components/ui/Icon'
@@ -168,6 +169,11 @@ export default function AboutPage() {
 
   return (
     <>
+      <Seo
+        title="About Us | I-78 Truck Center"
+        description="Family-owned towing and heavy recovery serving Bethel, PA and the I-78 corridor. Licensed, insured — USDOT 682054."
+        path="/about"
+      />
       {/* ── HERO ─────────────────────────────────────────── */}
       <section
         style={{

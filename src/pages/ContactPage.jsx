@@ -1,3 +1,4 @@
+import Seo from '../components/Seo'
 import ContactForm from '../components/forms/ContactForm'
 import Icon from '../components/ui/Icon'
 
@@ -41,6 +42,11 @@ function InfoItem({ iconName, label, children }) {
 export default function ContactPage() {
   return (
     <>
+      <Seo
+        title="Contact Us | I-78 Truck Center"
+        description="Call I-78 Truck Center at 717-933-5655 for 24/7 towing and recovery, or send a message. Located at 120 Kline Rd, Bethel, PA 19507."
+        path="/contact"
+      />
       {/* ── HERO ─────────────────────────────────────────── */}
       <section
         style={{

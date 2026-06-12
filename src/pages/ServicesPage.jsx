@@ -1,3 +1,4 @@
+import Seo from '../components/Seo'
 import ServiceCard from '../components/ui/ServiceCard'
 import Icon from '../components/ui/Icon'
 
@@ -55,6 +56,11 @@ const SERVICES = [
 export default function ServicesPage() {
   return (
     <>
+      <Seo
+        title="Towing & Recovery Services | I-78 Truck Center"
+        description="Light, medium & heavy-duty towing, rollover recovery, emergency road service, secure storage, and hauling & repairs in Bethel, PA. Available 24/7 — call 717-933-5655."
+        path="/services"
+      />
       {/* ── HERO ─────────────────────────────────────────── */}
       <section
         style={{

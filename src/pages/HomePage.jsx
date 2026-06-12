@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Seo from '../components/Seo'
 import ServiceCard from '../components/ui/ServiceCard'
 import Icon from '../components/ui/Icon'
 import QuoteCalculator from '../components/calculator/QuoteCalculator'
@@ -69,6 +70,11 @@ const WHY_ITEMS = [
 export default function HomePage() {
   return (
     <>
+      <Seo
+        title="I-78 Truck Center | 24/7 Towing & Recovery — Bethel, PA"
+        description="I-78 Truck Center — 24/7 light and heavy-duty towing, recovery, and emergency road service in Bethel, PA. Call 717-933-5655."
+        path="/"
+      />
       {/* ── HERO ─────────────────────────────────────────── */}
       <section
         style={{
