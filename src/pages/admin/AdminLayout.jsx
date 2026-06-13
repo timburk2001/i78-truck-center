@@ -14,8 +14,16 @@ export default function AdminLayout() {
   const [userEmail, setUserEmail] = useState('')
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       if (!session) { navigate('/admin/login', { replace: true }); return }
+      // Being logged in isn't enough — the user must be a designated admin.
+      const { data: adminRow } = await supabase
+        .from('admin_users').select('user_id').eq('user_id', session.user.id).maybeSingle()
+      if (!adminRow) {
+        await supabase.auth.signOut()
+        navigate('/admin/login', { replace: true })
+        return
+      }
       setUserEmail(session.user.email)
       setChecking(false)
     })
