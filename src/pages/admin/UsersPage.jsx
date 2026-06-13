@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { supabase } from '../../lib/supabase'
+import { supabase, SUPABASE_URL } from '../../lib/supabase'
 
-const FN_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/manage-users`
+const FN_URL = `${SUPABASE_URL}/functions/v1/manage-users`
 
 async function authHeaders() {
   const { data: { session } } = await supabase.auth.getSession()
