@@ -145,14 +145,33 @@ function JobCard({ row }) {
           {row.phone && <p style={metaStyle}><strong>Phone:</strong> {row.phone}</p>}
           {row.experience && <p style={metaStyle}><strong>Experience:</strong> {row.experience}</p>}
           {row.cover_letter && <p style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink)', margin: 0 }}>{row.cover_letter}</p>}
-          {row.resume_url && (
-            <a href={row.resume_url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--red)', fontSize: 13, fontWeight: 700 }}>
-              View Resume ↗
-            </a>
-          )}
+          {row.resume_url && <ResumeLink path={row.resume_url} />}
         </div>
       )}
     </div>
+  )
+}
+
+function ResumeLink({ path }) {
+  const [loading, setLoading] = useState(false)
+  const [err, setErr] = useState(false)
+
+  async function open() {
+    setLoading(true); setErr(false)
+    const { data, error } = await supabase.storage.from('resumes').createSignedUrl(path, 3600)
+    setLoading(false)
+    if (error || !data?.signedUrl) { setErr(true); return }
+    window.open(data.signedUrl, '_blank', 'noopener,noreferrer')
+  }
+
+  return (
+    <button
+      onClick={open}
+      disabled={loading}
+      style={{ background: 'none', border: 'none', padding: 0, color: err ? 'var(--ink)' : 'var(--red)', fontSize: 13, fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--ff-body)', textAlign: 'left' }}
+    >
+      {loading ? 'Opening…' : err ? 'Resume unavailable' : 'View Resume ↗'}
+    </button>
   )
 }
 
