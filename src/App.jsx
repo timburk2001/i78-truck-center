@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import HomePage from './pages/HomePage'
 import ServicesPage from './pages/ServicesPage'
@@ -11,9 +12,22 @@ import SubmissionsPage from './pages/admin/SubmissionsPage'
 import UsersPage from './pages/admin/UsersPage'
 import RecipientsPage from './pages/admin/RecipientsPage'
 
+function InviteRedirect() {
+  const navigate = useNavigate()
+  useEffect(() => {
+    const hash = window.location.hash
+    if (hash.includes('type=invite') && hash.includes('access_token=')) {
+      navigate('/admin/set-password', { replace: true })
+    }
+  }, [navigate])
+  return null
+}
+
 export default function App() {
   return (
-    <Routes>
+    <>
+      <InviteRedirect />
+      <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="services" element={<ServicesPage />} />
@@ -28,5 +42,6 @@ export default function App() {
         <Route path="recipients" element={<RecipientsPage />} />
       </Route>
     </Routes>
+    </>
   )
 }
