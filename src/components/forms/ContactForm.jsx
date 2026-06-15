@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { supabase } from '../../lib/supabase'
+import Turnstile, { TURNSTILE_SITE_KEY } from '../Turnstile'
 
 const inputStyle = {
   backgroundColor: '#f7f3ed',
@@ -12,6 +13,8 @@ const labelClass = 'block text-sm font-semibold mb-1 uppercase tracking-wide'
 export default function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
   const [status, setStatus] = useState('idle')
+  const [captchaToken, setCaptchaToken] = useState(null)
+  const [turnstileKey, setTurnstileKey] = useState(0)
 
   const set = (field) => (e) => setForm((f) => ({ ...f, [field]: e.target.value }))
 
@@ -19,11 +22,19 @@ export default function ContactForm() {
     e.preventDefault()
     setStatus('loading')
 
-    const { error } = await supabase
-      .from('contact_submissions')
-      .insert({ name: form.name, email: form.email, phone: form.phone || null, message: form.message })
+    // Route through the submit-quote edge function so the Turnstile token is
+    // verified server-side before anything is stored.
+    const { data, error } = await supabase.functions.invoke('submit-quote', {
+      body: { name: form.name, email: form.email, phone: form.phone || null, message: form.message, captchaToken },
+    })
 
-    setStatus(error ? 'error' : 'success')
+    if (error || data?.error) {
+      setStatus('error')
+      setCaptchaToken(null)
+      setTurnstileKey((k) => k + 1) // single-use token — refresh for retry
+      return
+    }
+    setStatus('success')
   }
 
   if (status === 'success') {
@@ -67,6 +78,8 @@ export default function ContactForm() {
           style={{ ...inputStyle, resize: 'vertical' }} />
       </div>
 
+      <Turnstile key={turnstileKey} onVerify={setCaptchaToken} onExpire={() => setCaptchaToken(null)} />
+
       {status === 'error' && (
         <p className="text-sm text-center" style={{ color: '#c02026' }}>
           Submission failed. Please call us at{' '}
@@ -76,7 +89,7 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        disabled={status === 'loading'}
+        disabled={status === 'loading' || (!!TURNSTILE_SITE_KEY && !captchaToken)}
         className="py-4 rounded-md text-white font-bold text-lg uppercase tracking-wide transition-all hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed"
         style={{ backgroundColor: '#c02026', fontFamily: "'Barlow Condensed', sans-serif" }}
       >
