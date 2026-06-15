@@ -24,6 +24,12 @@ export default function AdminLayout() {
         navigate('/admin/login', { replace: true })
         return
       }
+      // Mandatory two-step: must reach aal2 (enroll or challenge) to use the panel.
+      const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel()
+      if (aal?.currentLevel !== 'aal2') {
+        navigate('/admin/mfa', { replace: true })
+        return
+      }
       setUserEmail(session.user.email)
       setChecking(false)
     })

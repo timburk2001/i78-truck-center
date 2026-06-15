@@ -14,6 +14,7 @@ export default function UsersPage() {
   const [email, setEmail] = useState('')
   const [error, setError] = useState(null)
   const [notice, setNotice] = useState(null) // { kind: 'created'|'reset', email, password }
+  const [info, setInfo] = useState(null)
   const [busy, setBusy] = useState(false)
   const [rowBusy, setRowBusy] = useState(null)
 
@@ -56,6 +57,17 @@ export default function UsersPage() {
     setRowBusy(null)
     if (!res.ok) { setError(data.error || 'Failed to reset password'); return }
     setNotice({ kind: 'reset', email: user.email, password: data.tempPassword })
+  }
+
+  async function handleResetMfa(user) {
+    if (!confirm(`Reset two-step verification for ${user.email}? They'll set it up again on their next login.`)) return
+    setRowBusy(user.id); setError(null); setNotice(null); setInfo(null)
+    const res = await fetch(`${FN_URL}/${user.id}`, { method: 'PUT', headers: await authHeaders() })
+    const data = await res.json()
+    setRowBusy(null)
+    if (!res.ok) { setError(data.error || 'Failed to reset two-step'); return }
+    setInfo(`Two-step reset for ${user.email}. They'll re-enroll on next login.`)
+    load()
   }
 
   async function handleDelete(user) {
@@ -131,6 +143,7 @@ export default function UsersPage() {
       </div>
 
       {error && <p style={{ color: 'var(--red)', marginBottom: 16, fontSize: 13 }}>{error}</p>}
+      {info && <p style={{ color: 'var(--navy)', marginBottom: 16, fontSize: 13, fontWeight: 600 }}>{info}</p>}
 
       {users === null ? (
         <p style={{ color: 'var(--ink)', opacity: 0.4 }}>Loading…</p>
@@ -139,7 +152,7 @@ export default function UsersPage() {
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
             <thead>
               <tr style={{ borderBottom: '2px solid var(--grey)' }}>
-                {['Email', 'Created', 'Last Sign-In', ''].map(h => (
+                {['Email', '2-Step', 'Created', 'Last Sign-In', ''].map(h => (
                   <th key={h} style={{ padding: '10px 16px', textAlign: 'left', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.45 }}>
                     {h}
                   </th>
@@ -154,11 +167,24 @@ export default function UsersPage() {
                     <td style={{ padding: '12px 16px', fontWeight: 600 }}>
                       {u.email}{isSelf && <span style={{ marginLeft: 8, fontSize: 11, fontWeight: 700, color: 'var(--navy)' }}>(you)</span>}
                     </td>
+                    <td style={{ padding: '12px 16px' }}>
+                      <span style={{ fontSize: 12, fontWeight: 700, color: u.mfa_enabled ? 'var(--navy)' : 'var(--ink)', opacity: u.mfa_enabled ? 1 : 0.4 }}>
+                        {u.mfa_enabled ? 'On' : 'Off'}
+                      </span>
+                    </td>
                     <td style={{ padding: '12px 16px', color: 'var(--ink)', opacity: 0.45 }}>{fmt(u.created_at)}</td>
                     <td style={{ padding: '12px 16px', color: 'var(--ink)', opacity: 0.45 }}>{u.last_sign_in_at ? fmt(u.last_sign_in_at) : '—'}</td>
                     <td style={{ padding: '12px 16px', textAlign: 'right', whiteSpace: 'nowrap' }}>
                       <button onClick={() => handleReset(u)} disabled={rowBusy === u.id} style={{ ...rowBtn, marginRight: 8 }}>
                         Reset Password
+                      </button>
+                      <button
+                        onClick={() => handleResetMfa(u)}
+                        disabled={rowBusy === u.id || !u.mfa_enabled}
+                        title={!u.mfa_enabled ? 'No two-step enrolled' : undefined}
+                        style={{ ...rowBtn, marginRight: 8, opacity: (rowBusy === u.id || !u.mfa_enabled) ? 0.4 : 1, cursor: !u.mfa_enabled ? 'not-allowed' : 'pointer' }}
+                      >
+                        Reset 2-Step
                       </button>
                       <button
                         onClick={() => handleDelete(u)}
