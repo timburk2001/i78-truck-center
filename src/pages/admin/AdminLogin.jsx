@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
+import Turnstile, { TURNSTILE_SITE_KEY } from '../../components/Turnstile'
 
 export default function AdminLogin() {
   const navigate = useNavigate()
@@ -8,14 +9,29 @@ export default function AdminLogin() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [captchaToken, setCaptchaToken] = useState(null)
+  const [turnstileKey, setTurnstileKey] = useState(0)
+
+  function resetCaptcha() {
+    setCaptchaToken(null)
+    setTurnstileKey(k => k + 1)
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()
     setLoading(true)
     setError(null)
-    const { error: err } = await supabase.auth.signInWithPassword({ email, password })
+    const { error: err } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+      options: captchaToken ? { captchaToken } : undefined,
+    })
     setLoading(false)
-    if (err) { setError(err.message); return }
+    if (err) {
+      setError(err.message)
+      resetCaptcha() // Turnstile tokens are single-use — get a fresh one for the retry
+      return
+    }
     navigate('/admin')
   }
 
@@ -65,11 +81,18 @@ export default function AdminLogin() {
             />
           </div>
 
+          <Turnstile key={turnstileKey} onVerify={setCaptchaToken} onExpire={() => setCaptchaToken(null)} />
+
           {error && (
             <p style={{ color: 'var(--red)', fontSize: 13, margin: 0 }}>{error}</p>
           )}
 
-          <button type="submit" className="btn-red" disabled={loading} style={{ marginTop: 8, justifyContent: 'center', opacity: loading ? 0.7 : 1 }}>
+          <button
+            type="submit"
+            className="btn-red"
+            disabled={loading || (!!TURNSTILE_SITE_KEY && !captchaToken)}
+            style={{ marginTop: 8, justifyContent: 'center', opacity: (loading || (!!TURNSTILE_SITE_KEY && !captchaToken)) ? 0.7 : 1 }}
+          >
             {loading ? 'Signing in…' : 'Sign In'}
           </button>
         </form>
