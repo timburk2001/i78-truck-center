@@ -110,7 +110,6 @@ function ContactCard({ row }) {
       </div>
       {open && (
         <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid var(--grey)' }}>
-          {row.service && <p style={metaStyle}><strong>Service:</strong> {row.service}</p>}
           <p style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink)', margin: 0 }}>{row.message}</p>
         </div>
       )}
@@ -143,8 +142,8 @@ function JobCard({ row }) {
       {open && (
         <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid var(--grey)', display: 'flex', flexDirection: 'column', gap: 8 }}>
           {row.phone && <p style={metaStyle}><strong>Phone:</strong> {row.phone}</p>}
-          {row.experience && <p style={metaStyle}><strong>Experience:</strong> {row.experience}</p>}
-          {row.cover_letter && <p style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink)', margin: 0 }}>{row.cover_letter}</p>}
+          {row.cdl_class && <p style={metaStyle}><strong>CDL Class:</strong> {row.cdl_class}</p>}
+          {row.years_experience != null && <p style={metaStyle}><strong>Experience:</strong> {row.years_experience} yr{row.years_experience === 1 ? '' : 's'}</p>}
           {row.resume_url && <ResumeLink path={row.resume_url} />}
         </div>
       )}
